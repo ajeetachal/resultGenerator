@@ -5,29 +5,28 @@ document.addEventListener('DOMContentLoaded', function() {
     const studentForm = document.getElementById('studentForm');
     const subjectContainer = document.getElementById('subjectContainer');
     const streamSelect = document.getElementById('stream');
+    const classSelect = document.getElementById('className');
     
-    // All available subjects
+    // All available subjects (updated with Sanskrit & Urdu)
     const allSubjects = [
         "Physics", "Philosophy", "Entrepreneurship", "Political Science", 
         "Accountancy", "Mathematics", "Business Studies", "Geography", 
-        "Biology", "English", "Hindi", "Regional Languages", "Computer Science", 
-        "Multimedia and Web Technology", "Sociology", "Music", "Sanskrit", "Urdu", "Agriculture", 
-        "Economics", "Psychology", "History", "Home Science", "Science", 
-        "Social Science", "Chemistry"
+        "Biology", "English", "Hindi", "Sanskrit", "Urdu", "Regional Languages", 
+        "Computer Science", "Multimedia and Web Technology", "Sociology", 
+        "Music", "Agriculture", "Economics", "Psychology", "History", "Home Science"
     ];
     
     // Stream-specific subjects
     const streamSubjects = {
-        "9th": ["Mathematics", "Science", "Social Science"],
-        "10th": ["Mathematics", "Science", "Social Science"],
         "Science(PCM)": ["Physics", "Chemistry", "Mathematics"],
         "Science(PCB)": ["Physics", "Chemistry", "Biology"],
         "Commerce": ["Accountancy", "Business Studies", "Economics"],
-        "Arts": ["History", "Political Science", "Geography"]
+        "Arts": ["History", "Political Science", "Geography"],
+        "General": ["Mathematics", "Science", "Social Studies"] // For 9th & 10th
     };
     
     // Common subjects for all streams
-    const commonSubjects = ["English"];
+    const commonSubjects = ["English", "Hindi", "Sanskrit", "Urdu"];
     
     // Additional subjects
     const additionalSubjects = allSubjects.filter(sub => 
@@ -36,24 +35,42 @@ document.addEventListener('DOMContentLoaded', function() {
     
     let selectedSubjects = [];
     
+    // Update stream options based on class selection
+    classSelect.addEventListener('change', function() {
+        const selectedClass = this.value;
+        streamSelect.innerHTML = '<option value="">Select Stream</option>';
+        
+        // Add streams based on class
+        const streams = {
+            "9th": ["General"],
+            "10th": ["General"],
+            "11th": ["Science(PCM)", "Science(PCB)", "Commerce", "Arts"],
+            "12th": ["Science(PCM)", "Science(PCB)", "Commerce", "Arts"]
+        };
+        
+        streams[selectedClass].forEach(stream => {
+            const option = document.createElement('option');
+            option.value = stream;
+            option.textContent = stream;
+            streamSelect.appendChild(option);
+        });
+        
+        // Reset subjects when class changes
+        initializeSubjects();
+    });
+    
     // Initialize subject inputs
     function initializeSubjects() {
         subjectContainer.innerHTML = '';
         selectedSubjects = [];
         
-        const stream = streamSelect.value;
-        const isSecondary = stream === "9th" || stream === "10th";
-        
         // Add 5 main subject inputs
         for (let i = 1; i <= 5; i++) {
-            createSubjectInput(i, i <= (isSecondary ? 3 : 3)); // First 3 are compulsory
+            createSubjectInput(i, i <= 3); // First 3 are compulsory based on stream
         }
         
         // Add additional subject input
         createSubjectInput(6, false, true);
-        
-        // Update class for styling
-        subjectContainer.className = isSecondary ? 'marks-grid stream-9th-10th' : 'marks-grid';
     }
     
     // Create a subject input group
@@ -77,16 +94,14 @@ document.addEventListener('DOMContentLoaded', function() {
         
         // Add appropriate subjects based on stream and whether it's additional
         let availableSubjects = [];
-        const stream = streamSelect.value;
-        
         if (isAdditional) {
             availableSubjects = additionalSubjects;
         } else if (index <= 3) {
+            const stream = streamSelect.value;
             availableSubjects = [...streamSubjects[stream], ...commonSubjects];
         } else {
-            // For subject 4 and 5, include English and Hindi plus other available subjects
-            availableSubjects = ["English", "Hindi", ...allSubjects.filter(sub => 
-                ![...streamSubjects[stream], ...commonSubjects, "English", "Hindi"].includes(sub)
+            availableSubjects = ["English", "Hindi", "Sanskrit", "Urdu", ...allSubjects.filter(sub => 
+                ![...streamSubjects[streamSelect.value], ...commonSubjects, "English", "Hindi", "Sanskrit", "Urdu"].includes(sub)
             )];
         }
         

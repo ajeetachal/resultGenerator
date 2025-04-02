@@ -4,12 +4,7 @@
     padding: 0;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
-.stream-9th .subject-group:nth-child(-n+3) label::after,
-.stream-10th .subject-group:nth-child(-n+3) label::after {
-    content: " (Compulsory)";
-    color: #718096;
-    font-weight: normal;
-}
+
 body {
     background-color: #f5f9ff;
     padding: 20px;

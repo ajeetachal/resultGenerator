@@ -1,0 +1,336 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+.stream-9th .subject-group:nth-child(-n+3) label::after,
+.stream-10th .subject-group:nth-child(-n+3) label::after {
+    content: " (Compulsory)";
+    color: #718096;
+    font-weight: normal;
+}
+body {
+    background-color: #f5f9ff;
+    padding: 20px;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+    background-color: white;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    flex: 1;
+}
+
+.input-form {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+.form-header {
+    text-align: center;
+    margin-bottom: 25px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.form-header h1 {
+    color: #2c3e50;
+    margin-top: 15px;
+    font-size: 28px;
+}
+
+.school-logo {
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
+    border-radius: 50%;
+    border: 2px solid #3498db;
+    padding: 5px;
+}
+
+.form-section {
+    margin-bottom: 25px;
+    padding: 20px;
+    background-color: #f8fafc;
+    border-radius: 8px;
+    border-left: 4px solid #3498db;
+}
+
+.form-section h2 {
+    color: #2c3e50;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.icon {
+    font-size: 20px;
+}
+
+.details-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+    margin-bottom: 15px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: #4a5568;
+    font-size: 14px;
+}
+
+.form-group input, .form-group select {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid #e2e8f0;
+    border-radius: 6px;
+    background-color: white;
+    transition: all 0.3s;
+}
+
+.form-group input:focus, .form-group select:focus {
+    border-color: #3498db;
+    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
+    outline: none;
+}
+
+.subject-group {
+    margin-bottom: 15px;
+    padding: 15px;
+    background-color: white;
+    border-radius: 6px;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+.marks-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 15px;
+    margin-top: 15px;
+}
+
+button {
+    border: none;
+    padding: 12px 24px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.3s;
+}
+
+.primary-btn {
+    background-color: #3498db;
+    color: white;
+    margin: 20px auto 0;
+    display: block;
+}
+
+.primary-btn:hover {
+    background-color: #2980b9;
+    transform: translateY(-2px);
+}
+
+.print-btn {
+    background-color: #27ae60;
+    color: white;
+    margin: 0 auto;
+    display: none;
+}
+
+.print-btn:hover {
+    background-color: #219653;
+}
+
+.result-container {
+    display: none;
+    border: 1px solid #e2e8f0;
+    padding: 0;
+    margin-bottom: 20px;
+    page-break-after: avoid;
+    page-break-inside: avoid;
+}
+
+.result-header {
+    background-color: #2c3e50;
+    color: white;
+    padding: 15px;
+    text-align: center;
+    height: 10vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    page-break-after: avoid;
+}
+
+.result-header h2 {
+    margin-bottom: 5px;
+}
+
+.result-header p {
+    font-size: 14px;
+    opacity: 0.9;
+}
+
+.student-details {
+    padding: 20px;
+    height: 30vh;
+    border-bottom: 1px solid #e2e8f0;
+    page-break-after: avoid;
+}
+
+.student-marks {
+    padding: 20px;
+    min-height: 50vh;
+    page-break-after: avoid;
+}
+
+.details-grid-result {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+}
+
+.detail-item {
+    margin-bottom: 10px;
+    font-size: 15px;
+}
+
+.detail-item strong {
+    display: inline-block;
+    width: 150px;
+    color: #4a5568;
+}
+
+.marks-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    font-size: 14px;
+}
+
+.marks-table th, .marks-table td {
+    border: 1px solid #e2e8f0;
+    padding: 10px;
+    text-align: left;
+}
+
+.marks-table th {
+    background-color: #f8fafc;
+    color: #2c3e50;
+    font-weight: 600;
+}
+
+.total-row {
+    font-weight: bold;
+    background-color: #f8fafc;
+}
+
+.additional-subject {
+    background-color: #f8fafc;
+}
+
+.signature-area {
+    margin-top: 40px;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 50px;
+}
+
+.signature-box {
+    text-align: center;
+}
+
+.signature-line {
+    width: 200px;
+    border-top: 1px solid #333;
+    margin: 5px auto;
+    padding-top: 25px;
+}
+
+.creator-footer {
+    text-align: center;
+    margin-top: 20px;
+    padding: 10px;
+    color: #718096;
+    font-size: 12px;
+}
+
+@media print {
+    body {
+        background-color: white;
+        padding: 0;
+        font-size: 12px;
+    }
+
+    .container {
+        box-shadow: none;
+        padding: 0;
+        max-width: 100%;
+    }
+
+    .input-form, #printBtn, .creator-footer {
+        display: none;
+    }
+    
+    .result-container {
+        display: block !important;
+        border: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .result-header {
+        height: 8vh;
+        padding: 10px;
+    }
+
+    .student-details {
+        height: auto;
+        padding: 15px;
+    }
+
+    .student-marks {
+        min-height: auto;
+        padding: 15px;
+    }
+
+    .marks-table {
+        font-size: 12px;
+    }
+
+    .detail-item {
+        font-size: 12px;
+    }
+
+    .detail-item strong {
+        width: 120px;
+    }
+
+    .signature-line {
+        width: 150px;
+    }
+}

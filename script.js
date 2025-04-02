@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', function() {
         "Physics", "Philosophy", "Entrepreneurship", "Political Science", 
         "Accountancy", "Mathematics", "Business Studies", "Geography", 
         "Biology", "English", "Hindi", "Regional Languages", "Computer Science", 
-        "Multimedia and Web Technology", "Sociology", "Music", "Agriculture", 
+        "Multimedia and Web Technology", "Sociology", "Music", "Sanskrit", "Urdu", "Agriculture", 
         "Economics", "Psychology", "History", "Home Science", "Science", 
         "Social Science", "Chemistry"
     ];
